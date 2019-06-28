@@ -1,0 +1,266 @@
+// #######################################################################
+// NOTICE
+//
+// This software (or technical data) was produced for the U.S. Government
+// under contract, and is subject to the Rights in Data-General Clause
+// 52.227-14, Alt. IV (DEC 2007).
+//
+// Copyright 2019 The MITRE Corporation. All Rights Reserved.
+// ####################################################################### 
+
+{
+  "name" : "BIQTFace",
+  "description": "BIQTFace is a library for computation of image quality metrics, as well as landmark detection for full frontal and profile images. It uses the OpenCV and OpenBR libraries.",
+  "version" : "0.1",
+  "sourceLanguage" : "c++",
+  "modality": "face",
+  "attributes": [
+    {
+      "name": "opencv_face_found",
+      "description": "Indicates whether a face was found (1) or not (0), using Haar Cascades in OpenCV. The algorithm will find and evaluate the largest face in the image.",
+      "type": "BOOLEAN",
+      "defaultValue": "0"
+    },
+    {
+      "name": "opencv_frontal_face_found",
+      "description": "Indicates if the detected face has a frontal orientation.",
+      "type": "BOOLEAN",
+      "defaultValue": "0"
+    },
+    {
+      "name": "opencv_profile_face_found",
+      "description": "Indicates if the detected face has a profile orientation.",
+      "type": "BOOLEAN",
+      "defaultValue": "0"
+    },
+    {
+      "name": "opencv_face_x",
+      "description": "X-coordinate of center of face bounding box.",
+      "type": "DOUBLE",
+      "defaultValue": "-1"
+    },
+    {
+      "name": "opencv_face_y",
+      "description": "Y-coordinate of center of face bounding box.",
+      "type": "DOUBLE",
+      "defaultValue": "-1"
+    },
+    {
+      "name": "opencv_face_height",
+      "description": "Height, in pixels, of the face bounding box.",
+      "type": "DOUBLE",
+      "defaultValue": "-1"
+    },
+    {
+      "name": "opencv_face_width",
+      "description": "Width, in pixels, of the face bounding box.",
+      "type": "DOUBLE",
+      "defaultValue": "-1"
+    },
+    {
+      "name": "openbr_left_eye_x",
+      "description": "X-coordinate of the detected face's left eye.",
+      "type": "DOUBLE",
+      "defaultValue": "-1"
+    },
+    {
+      "name": "openbr_left_eye_y",
+      "description": "Y-coordinate of the detected face's left eye.",
+      "type": "DOUBLE",
+      "defaultValue": "-1"
+    },
+    {
+      "name": "openbr_right_eye_x",
+      "description": "X-coordinate of the detected face's right eye.",
+      "type": "DOUBLE",
+      "defaultValue": "-1"
+    },
+    {
+      "name": "openbr_right_eye_y",
+      "description": "Y-coordinate of the detected face's right eye.",
+      "type": "DOUBLE",
+      "defaultValue": "-1"
+    },
+    {
+      "name": "opencv_eye_count",
+      "description": "Number of eyes detected in the given face.",
+      "type": "DOUBLE",
+      "defaultValue": "0"
+    }
+    ,
+    {
+      "name": "opencv_IPD",
+      "description": "The interpupil distance, in pixels.",
+      "type": "DOUBLE",
+      "defaultValue": "-1"
+    }
+    ,
+    {
+      "name": "opencv_left_eye_x",
+      "description": "X-coordinate of the detected face's left eye.",
+      "type": "DOUBLE",
+      "defaultValue": "-1"
+    }
+    ,
+    {
+      "name": "opencv_left_eye_y",
+      "description": "Y-coordinate of the detected face's left eye.",
+      "type": "DOUBLE",
+      "defaultValue": "-1"
+    }
+    ,
+    {
+      "name": "opencv_mouth_count",
+      "description": "Number of mouths detected in the given face.",
+      "type": "DOUBLE",
+      "defaultValue": "0"
+    }
+    ,
+    {
+      "name": "opencv_mouth_x",
+      "description": "X-coordinate of the detected face's mouth.",
+      "type": "DOUBLE",
+      "defaultValue": "-1"
+    },
+    {
+      "name": "opencv_mouth_y",
+      "description": "Y-coordinate of the detected face's mouth.",
+      "type": "DOUBLE",
+      "defaultValue": "-1"
+    },
+    {
+      "name": "opencv_face_center_of_mass_y",
+      "description": "Y-coordinate of the detected face's center of mass.",
+      "type": "DOUBLE",
+      "defaultValue": "-1"
+    },
+    {
+      "name": "opencv_face_center_of_mass_x",
+      "description": "X-coordinate of the detected face's center of mass.",
+      "type": "DOUBLE",
+      "defaultValue": "-1"
+    },
+    {
+      "name": "opencv_face_offset_x",
+      "description": "The offsest, in pixels, of the face in the overall image.",
+      "type": "DOUBLE",
+      "defaultValue": "-1"
+    },
+    {
+      "name": "opencv_face_offset_y",
+      "description": "The offset, in pixels, of the face in the overall image.",
+      "type": "DOUBLE",
+      "defaultValue": "-1"
+    },
+    {
+      "name": "quality",
+      "description": "Quality score of the primary (largest) detected face in the image.",
+      "type": "DOUBLE",
+      "defaultValue": "0"
+    },
+    {
+      "name": "blur",
+      "description": "A measure of the blur of the overall image.",
+      "type": "DOUBLE",
+      "defaultValue": "0"
+    },
+    {
+      "name": "blur_face",
+      "description": "A measure of the blur of the primary detected face in the image.",
+      "type": "DOUBLE",
+      "defaultValue": "0"
+    },
+    {
+      "name": "openbr_confidence",
+      "description": "A measure of how confident we are in the face detection.",
+      "type": "DOUBLE",
+      "defaultValue": "0"
+    },
+    {
+      "name": "openbr_IPD",
+      "description": "Interpupil distance, in pixels, of the detected face.",
+      "type": "DOUBLE",
+      "defaultValue": "0"
+    },
+    {
+      "name": "background_deviation",
+      "description": "Standard deviation between the image channels.",
+      "type": "DOUBLE",
+      "defaultValue": "0"
+    },
+    {
+      "name": "background_grayness",
+      "description": "Intensity differences between the image channels",
+      "type": "DOUBLE",
+      "defaultValue": "0"
+    },
+    {
+      "name": "focus",
+      "description": "Measure of the focus of the overall image.",
+      "type": "DOUBLE",
+      "defaultValue": "0"
+    },
+    {
+      "name": "focus_face",
+      "description": "Measure of the focus of the detected face in the image.",
+      "type": "DOUBLE",
+      "defaultValue": "0"
+    },
+    {
+      "name": "image_area",
+      "description": "Area, in pixels, of the image.",
+      "type": "DOUBLE",
+      "defaultValue": "0"
+    },
+    {
+      "name": "image_channels",
+      "description": "Number of color channels of the image.",
+      "type": "DOUBLE",
+      "defaultValue": "0"
+    },
+    {
+      "name": "image_height",
+      "description": "Height, in pixels, of the image.",
+      "type": "DOUBLE",
+      "defaultValue": "0"
+    },
+    {
+      "name": "image_ratio",
+      "description": "Ratio of width to height of the image.",
+      "type": "DOUBLE",
+      "defaultValue": "0"
+    },
+    {
+      "name": "image_width",
+      "description": "Width, in pixels, of the image.",
+      "type": "DOUBLE",
+      "defaultValue": "0"
+    },
+    {
+      "name": "over_exposure",
+      "description": "Measure of the exposure of the overall image.",
+      "type": "DOUBLE",
+      "defaultValue": "0"
+    },
+    {
+      "name": "over_exposure_face",
+      "description": "Measure of the exposure of the detected face in the image.",
+      "type": "DOUBLE",
+      "defaultValue": "0"
+    }
+    ,
+    {
+      "name": "skin_ratio_face",
+      "description": "Ratio of the face skin area to the detected face bounding box area.",
+      "type": "DOUBLE",
+      "defaultValue": "0"
+    }
+    ,
+    {
+      "name": "skin_ratio_full",
+      "description": "Ratio of the face skin area to the overall image area.",
+      "type": "DOUBLE",
+      "defaultValue": "0"
+    }
+  ]
+}
