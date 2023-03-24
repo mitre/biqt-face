@@ -9,6 +9,7 @@
 // #######################################################################
 
 #include "cvlandmarker.h"
+#include "opencv2/core.hpp"
 
 CvLandmarker::CvLandmarker() {}
 
@@ -127,7 +128,7 @@ CvLandmarker::getLandmarksNonThreaded(const cv::Mat &img, bool printLandmarks,
 
     // convert the img to gray  and then equalize equalize
     if (img.channels() > 2) {
-        cvtColor(img, imgGray, CV_BGR2GRAY);
+        cvtColor(img, imgGray, cv::COLOR_BGR2GRAY);
     }
     else {
         if (printLandmarks) {
@@ -143,7 +144,7 @@ CvLandmarker::getLandmarksNonThreaded(const cv::Mat &img, bool printLandmarks,
         if (detected_rect.area() == 0) {
             lbpFaceCascade.detectMultiScale(
                 imgGray, facesFound, 1.1, 4, 0,
-                minSize); //, CV_HAAR_FIND_BIGGEST_OBJECT); //, minSize);
+                minSize); //, CV_CASCADE_FIND_BIGGEST_OBJECT); //, minSize);
         }
         else {
             facesFound.push_back(detected_rect);
@@ -235,7 +236,7 @@ CvLandmarker::getLandmarksNonThreaded(const cv::Mat &img, bool printLandmarks,
                 cv::Mat upperFaceGray = faceGray(upperRect);
                 // eye pair detection
                 eyePairCascade.detectMultiScale(upperFaceGray, eyesPair, 1.1, 4,
-                                                CV_HAAR_FIND_BIGGEST_OBJECT);
+                                                cv::CASCADE_FIND_BIGGEST_OBJECT);
 
                 // for the pair
                 for (unsigned int j = 0; j < eyesPair.size(); j++) {
@@ -269,7 +270,7 @@ CvLandmarker::getLandmarksNonThreaded(const cv::Mat &img, bool printLandmarks,
                 // left
                 leftEyeCascade.detectMultiScale(upperFaceLeftGray, eyesLeft,
                                                 1.1, 4,
-                                                CV_HAAR_FIND_BIGGEST_OBJECT);
+                                                cv::CASCADE_FIND_BIGGEST_OBJECT);
 
                 for (unsigned int j = 0; j < eyesLeft.size(); j++) {
                     leftEyeDetectionCount++;
@@ -318,7 +319,7 @@ CvLandmarker::getLandmarksNonThreaded(const cv::Mat &img, bool printLandmarks,
                 // right
                 rightEyeCascade.detectMultiScale(upperFaceRightGray, eyesRight,
                                                  1.1, 4,
-                                                 CV_HAAR_FIND_BIGGEST_OBJECT);
+                                                 cv::CASCADE_FIND_BIGGEST_OBJECT);
 
                 for (unsigned int j = 0; j < eyesRight.size(); j++) {
                     rightEyeDetectionCount++;
@@ -377,7 +378,7 @@ CvLandmarker::getLandmarksNonThreaded(const cv::Mat &img, bool printLandmarks,
 
                 // nose
                 noseCascade.detectMultiScale(middleFaceGray, noses, 1.1, 4,
-                                             CV_HAAR_FIND_BIGGEST_OBJECT);
+                                             cv::CASCADE_FIND_BIGGEST_OBJECT);
 
                 for (unsigned int j = 0; j < noses.size(); j++) {
                     noseDetectionCount++;
@@ -449,7 +450,7 @@ CvLandmarker::getLandmarksNonThreaded(const cv::Mat &img, bool printLandmarks,
                 // mouth
                 mouthCascade.detectMultiScale(
                     lowerFaceGray, mouths, 1.1, 4,
-                    CV_HAAR_FIND_BIGGEST_OBJECT); //, cv::Size(40, 40) );
+                    cv::CASCADE_FIND_BIGGEST_OBJECT); //, cv::Size(40, 40) );
 
                 for (unsigned int j = 0; j < mouths.size(); j++) {
                     mouthDetectionCount++;
@@ -503,7 +504,7 @@ CvLandmarker::getLandmarksNonThreaded(const cv::Mat &img, bool printLandmarks,
             std::vector<cv::Rect> profileFaces;
             // try to see if there is a profile face!
             haarProfileFaceCascade.detectMultiScale(
-                imgGray, profileFaces, 1.1, 4, CV_HAAR_FIND_BIGGEST_OBJECT,
+                imgGray, profileFaces, 1.1, 4, cv::CASCADE_FIND_BIGGEST_OBJECT,
                 minSize);
             if (profileFaces.size() > 0) {
                 landmarkFace.isProfile = true;
