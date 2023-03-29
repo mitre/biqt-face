@@ -51,9 +51,8 @@ set(CMAKE_INSTALL_PREFIX "${BIQT_HOME}/providers")
 # BUILD THE FACE LIBRARY FILE #################################################
 find_package(OpenCV REQUIRED)
 find_package(Qt5 REQUIRED COMPONENTS Core Widgets Gui Network)
+find_package(jsoncpp REQUIRED)
 find_library(OPENBR NAMES openbr libopenbr HINTS ${OPENBR_DIR} ${OPENBR_DIR}/lib)
-find_library(JSONCPP NAMES libjsoncpp jsoncpp HINTS ${BIQT_HOME}/lib ${BIQT_HOME}/lib64 ${BIQT_HOME}/bin 
-                                                    ${BIQT_HOME}/../../lib ${BIQT_HOME}/../../lib64 ${BIQT_HOME}/../../bin)
 find_library(BIQTAPI NAMES libbiqtapi biqtapi HINTS ${BIQT_HOME}/lib ${BIQT_HOME}/lib64 ${BIQT_HOME}/bin 
                                                     ${BIQT_HOME}/../../lib ${BIQT_HOME}/../../lib64 ${BIQT_HOME}/../../bin)
                                                     
