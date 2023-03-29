@@ -69,7 +69,7 @@ file(GLOB SOURCE_FILES "src/*.cpp")
 include_directories("include" ${OPENBR_DIR}/include ${OpenCV_INCLUDE_DIRS} ${BIQT_HOME}/include ${BIQT_HOME}/../../include ${Qt5Core_INCLUDE_DIRS} ${Qt5Widgets_INCLUDE_DIRS} ${Qt5Gui_INCLUDE_DIRS} ${Qt5Network_INCLUDE_DIRS})
 add_library(BIQTFace SHARED ${SOURCE_FILES})
 
-target_link_libraries(BIQTFace ${JSONCPP} ${OPENBR} ${BIQTAPI} ${OpenCV_LIBS} ${CMAKE_DL_LIBS} ${Qt5Core_LIBRARIES} ${Qt5Widgets_LIBRARIES} ${Qt5Gui_LIBRARIES} ${Qt5Network_LIBRARIES})
+target_link_libraries(BIQTFace jsoncpp_lib ${OPENBR} ${BIQTAPI} ${OpenCV_LIBS} ${CMAKE_DL_LIBS} ${Qt5Core_LIBRARIES} ${Qt5Widgets_LIBRARIES} ${Qt5Gui_LIBRARIES} ${Qt5Network_LIBRARIES})
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/descriptor.json DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/config DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
