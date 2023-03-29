@@ -56,10 +56,6 @@ find_library(OPENBR NAMES openbr libopenbr HINTS ${OPENBR_DIR} ${OPENBR_DIR}/lib
 find_library(BIQTAPI NAMES libbiqtapi biqtapi HINTS ${BIQT_HOME}/lib ${BIQT_HOME}/lib64 ${BIQT_HOME}/bin 
                                                     ${BIQT_HOME}/../../lib ${BIQT_HOME}/../../lib64 ${BIQT_HOME}/../../bin)
                                                     
-if(NOT JSONCPP)
-	message(FATAL_ERROR "Failed to find library: jsoncpp.")
-endif()
-
 if(NOT BIQTAPI)
 	message(FATAL_ERROR "Failed to find library: biqtapi.")
 endif()
