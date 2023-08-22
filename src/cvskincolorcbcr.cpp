@@ -8,7 +8,8 @@
 // Copyright 2019 The MITRE Corporation. All Rights Reserved.
 // #######################################################################
 
-#include "opencv2/imgproc/imgproc.hpp"
+#include "opencv2/imgproc.hpp"
+#include "opencv2/core.hpp"
 
 #include "cvskincolorcbcr.h"
 
@@ -26,7 +27,7 @@ void cvSkinColorCrCb(const cv::Mat &_img, cv::Mat &mask)
     int rows = _img.rows;
 
     cv::Mat img;
-    cvtColor(_img, img, CV_BGR2YCrCb);
+    cvtColor(_img, img, cv::COLOR_BGR2YCrCb );
     mask = cv::Mat::zeros(rows, cols, CV_8U);
     for (int row = 0; row < rows; row++) {
         for (int col = 0; col < cols; col++) {

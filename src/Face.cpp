@@ -308,7 +308,7 @@ void Face::setOverExposure(const cv::Mat &img,
     }
 
     cv::Mat maskImg = img(mask);
-    cvtColor(maskImg, img_lab, CV_BGR2Lab);
+    cvtColor(maskImg, img_lab, cv::COLOR_BGR2Lab );
 
     std::vector<cv::Mat> planes_lab;
     split(img_lab, planes_lab);
@@ -819,7 +819,7 @@ std::string Face::getSapFailureStr(int sapFailure)
 double Face::getQuality(const std::vector<char> &img_data,
                         std::map<std::string, double> &metrics, FaceMode mode)
 {
-    cv::Mat img(imdecode(cv::Mat(img_data), CV_LOAD_IMAGE_COLOR));
+    cv::Mat img(imdecode(cv::Mat(img_data), cv::IMREAD_COLOR));
     // doing a continuous check as well on the image
     if ((img.rows == 0) || (img.cols == 0) || img.data == NULL ||
         !img.isContinuous()) {

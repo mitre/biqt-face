@@ -11,7 +11,7 @@
 {
   "name" : "BIQTFace",
   "description": "BIQTFace is a library for computation of image quality metrics, as well as landmark detection for full frontal and profile images. It uses the OpenCV and OpenBR libraries.",
-  "version" : "0.1",
+  "version" : "23.04",
   "sourceLanguage" : "c++",
   "modality": "face",
   "attributes": [
